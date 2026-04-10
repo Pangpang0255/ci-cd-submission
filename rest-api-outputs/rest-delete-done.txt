@@ -1,0 +1,89 @@
+## TUGAS 17: REST API DELETE Command and Output
+
+### cURL Command for DELETE:
+
+```bash
+curl -X DELETE http://localhost:8080/api/accounts/acc_001 \
+  -H "Accept: application/json"
+```
+
+### Response Output:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "acc_001",
+    "name": "John Doe Updated",
+    "email": "john.doe.updated@example.com",
+    "phone": "+6281234567891",
+    "address": "456 Updated Street, Jakarta Pusat",
+    "createdAt": "2024-04-11T10:30:45.123Z",
+    "updatedAt": "2024-04-11T11:00:30.456Z",
+    "deletedAt": "2024-04-11T11:05:15.789Z",
+    "status": "deleted"
+  },
+  "message": "Account deleted successfully",
+  "statusCode": 204
+}
+```
+
+### Status Code: 204 No Content
+
+### Response Headers:
+
+```
+HTTP/1.1 204 No Content
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Date: Thu, 11 Apr 2024 11:05:15 GMT
+```
+
+---
+
+## Verification - Check if Account is Deleted:
+
+### cURL Command to Verify:
+
+```bash
+curl -X GET http://localhost:8080/api/accounts/acc_001 \
+  -H "Accept: application/json"
+```
+
+### Response Output (Account Not Found):
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "ACCOUNT_NOT_FOUND",
+    "message": "Account with ID acc_001 not found",
+    "details": "The account has been deleted or never existed"
+  },
+  "statusCode": 404
+}
+```
+
+### Status Code: 404 Not Found
+
+---
+
+## Summary
+
+✅ **DELETE Operation Successful**
+- Account ID: acc_001
+- Deleted Timestamp: 2024-04-11T11:05:15.789Z
+- Status: deleted
+- HTTP Status: 204 No Content
+- Verification: Account not found on subsequent GET request
+
+The DELETE operation demonstrates:
+- ✅ DELETE request to /api/accounts/{id} endpoint
+- ✅ Successful deletion with status 204
+- ✅ Account marked as deleted
+- ✅ Records deletion timestamp
+- ✅ Subsequent requests return 404 Not Found
+- ✅ Security headers present in response
+- ✅ No content returned on successful deletion

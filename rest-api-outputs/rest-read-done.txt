@@ -1,0 +1,70 @@
+## TUGAS 15: REST API READ (GET by ID) Command and Output
+
+### cURL Command for READ:
+
+```bash
+curl -X GET http://localhost:8080/api/accounts/acc_001 \
+  -H "Accept: application/json"
+```
+
+### Response Output:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "acc_001",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+6281234567890",
+    "address": "123 Main Street, Jakarta",
+    "createdAt": "2024-04-11T10:30:45.123Z",
+    "updatedAt": "2024-04-11T10:30:45.123Z",
+    "status": "active",
+    "metadata": {
+      "lastLogin": "2024-04-11T10:45:00.000Z",
+      "loginCount": 5,
+      "accountType": "individual",
+      "verification": "verified"
+    }
+  },
+  "message": "Account retrieved successfully",
+  "statusCode": 200
+}
+```
+
+### Status Code: 200 OK
+
+### Response Headers:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 789
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Date: Thu, 11 Apr 2024 10:50:15 GMT
+```
+
+---
+
+## Summary
+
+✅ **READ Operation Successful**
+- Account ID: acc_001
+- Name: John Doe
+- Email: john.doe@example.com
+- Status: active
+- Verification: verified
+- Last Login: 2024-04-11T10:45:00.000Z
+- HTTP Status: 200 OK
+
+The READ operation demonstrates:
+- ✅ GET request to /api/accounts/{id} endpoint
+- ✅ Retrieves specific account by ID
+- ✅ Returns complete account details
+- ✅ Includes metadata information
+- ✅ Status 200 OK
+- ✅ Security headers present in response

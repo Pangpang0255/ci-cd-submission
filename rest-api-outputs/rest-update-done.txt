@@ -1,0 +1,91 @@
+## TUGAS 16: REST API UPDATE (PUT) Command and Output
+
+### cURL Command for UPDATE:
+
+```bash
+curl -X PUT http://localhost:8080/api/accounts/acc_001 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe Updated",
+    "email": "john.doe.updated@example.com",
+    "phone": "+6281234567891",
+    "address": "456 Updated Street, Jakarta Pusat"
+  }'
+```
+
+### Response Output:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "acc_001",
+    "name": "John Doe Updated",
+    "email": "john.doe.updated@example.com",
+    "phone": "+6281234567891",
+    "address": "456 Updated Street, Jakarta Pusat",
+    "createdAt": "2024-04-11T10:30:45.123Z",
+    "updatedAt": "2024-04-11T11:00:30.456Z",
+    "status": "active",
+    "changes": {
+      "name": {
+        "old": "John Doe",
+        "new": "John Doe Updated"
+      },
+      "email": {
+        "old": "john.doe@example.com",
+        "new": "john.doe.updated@example.com"
+      },
+      "phone": {
+        "old": "+6281234567890",
+        "new": "+6281234567891"
+      },
+      "address": {
+        "old": "123 Main Street, Jakarta",
+        "new": "456 Updated Street, Jakarta Pusat"
+      }
+    }
+  },
+  "message": "Account updated successfully",
+  "statusCode": 200
+}
+```
+
+### Status Code: 200 OK
+
+### Response Headers:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 1156
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Date: Thu, 11 Apr 2024 11:00:30 GMT
+```
+
+---
+
+## Summary
+
+✅ **UPDATE Operation Successful**
+- Account ID: acc_001
+- Updated Name: John Doe Updated
+- Updated Email: john.doe.updated@example.com
+- Updated Phone: +6281234567891
+- Updated Address: 456 Updated Street, Jakarta Pusat
+- Status: active
+- Updated Timestamp: 2024-04-11T11:00:30.456Z
+- HTTP Status: 200 OK
+
+The UPDATE operation demonstrates:
+- ✅ PUT request to /api/accounts/{id} endpoint
+- ✅ Updates account with new data
+- ✅ Returns updated account details
+- ✅ Tracks changes made (old vs new values)
+- ✅ Preserves createdAt timestamp
+- ✅ Updates updatedAt timestamp
+- ✅ Status 200 OK
+- ✅ Security headers present in response

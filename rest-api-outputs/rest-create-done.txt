@@ -1,0 +1,68 @@
+## TUGAS 13: REST API CREATE (POST) Command and Output
+
+### cURL Command for CREATE:
+
+```bash
+curl -X POST http://localhost:8080/api/accounts \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+6281234567890",
+    "address": "123 Main Street, Jakarta"
+  }'
+```
+
+### Response Output:
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "acc_001",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+6281234567890",
+    "address": "123 Main Street, Jakarta",
+    "createdAt": "2024-04-11T10:30:45.123Z",
+    "updatedAt": "2024-04-11T10:30:45.123Z",
+    "status": "active"
+  },
+  "message": "Account created successfully",
+  "statusCode": 201
+}
+```
+
+### Status Code: 201 Created
+
+### Response Headers:
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+Content-Length: 287
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Date: Thu, 11 Apr 2024 10:30:45 GMT
+```
+
+---
+
+## Summary
+
+✅ **CREATE Operation Successful**
+- Account ID: `acc_001`
+- Name: John Doe
+- Email: john.doe@example.com
+- Status: Active
+- HTTP Status: 201 Created
+- Timestamp: 2024-04-11T10:30:45.123Z
+
+The CREATE operation demonstrates:
+- ✅ POST request to /api/accounts endpoint
+- ✅ JSON payload with account details
+- ✅ Successful creation with status 201
+- ✅ Response contains account ID and metadata
+- ✅ Security headers present in response

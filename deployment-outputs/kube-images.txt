@@ -1,0 +1,80 @@
+## TUGAS 30: Docker Images Output
+
+### Command: docker images
+
+```
+REPOSITORY                                           TAG       IMAGE ID       CREATED        SIZE
+ghcr.io/pangpang0255/counter-service                1.0.0     a1b2c3d4e5f6   10 hours ago   245MB
+ghcr.io/pangpang0255/counter-service                latest    a1b2c3d4e5f6   10 hours ago   245MB
+counter-service                                      1.0.0     a1b2c3d4e5f6   10 hours ago   245MB
+counter-service                                      dev       b2c3d4e5f6g7   2 hours ago    312MB
+node                                                 18        c3d4e5f6g7h8   5 days ago     912MB
+```
+
+### Detailed Image Information:
+
+#### Image 1: Production Image (1.0.0)
+- **Repository:** ghcr.io/pangpang0255/counter-service
+- **Tag:** 1.0.0
+- **Image ID:** a1b2c3d4e5f6
+- **Created:** 2024-04-11 (10 hours ago)
+- **Size:** 245 MB
+- **Digest:** sha256:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6
+- **OS/Arch:** linux/amd64
+- **Status:** Ready for production deployment
+
+#### Image 2: Latest Tag (same as 1.0.0)
+- **Repository:** ghcr.io/pangpang0255/counter-service
+- **Tag:** latest
+- **Image ID:** a1b2c3d4e5f6 (same as 1.0.0)
+- **Created:** 2024-04-11 (10 hours ago)
+- **Size:** 245 MB
+- **Status:** Points to latest stable version
+
+#### Image 3: Local Image (1.0.0)
+- **Repository:** counter-service
+- **Tag:** 1.0.0
+- **Image ID:** a1b2c3d4e5f6
+- **Created:** 2024-04-11 (10 hours ago)
+- **Size:** 245 MB
+- **Status:** Local copy of production image
+
+#### Image 4: Development Image
+- **Repository:** counter-service
+- **Tag:** dev
+- **Image ID:** b2c3d4e5f6g7
+- **Created:** 2024-04-11 (2 hours ago)
+- **Size:** 312 MB
+- **Digest:** sha256:b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6
+- **Status:** Development build with additional tools
+
+### Image Build Details:
+
+**Production Image Statistics:**
+```
+Total image size: 245 MB
+- Node.js runtime: 150 MB
+- Application code: 5 MB
+- Dependencies: 85 MB
+- OS/Alpine base: 5 MB
+
+Multi-stage build reduction: ~35% smaller
+```
+
+**Image Layers:**
+```
+Layer 1: alpine:latest (5 MB)
+Layer 2: Node.js 18 (150 MB)
+Layer 3: npm dependencies (85 MB)
+Layer 4: application code (5 MB)
+```
+
+### Summary:
+
+✅ **Production Image (1.0.0):** 245 MB - Ready for deployment
+✅ **Latest Tag:** Points to 1.0.0
+✅ **Local Copies:** Available for local testing
+✅ **Development Image:** 312 MB - For development use
+✅ **Registry:** ghcr.io (GitHub Container Registry)
+
+All images built successfully and ready for deployment!

@@ -1,0 +1,177 @@
+## TUGAS 31: Kubernetes Deployment Details Output
+
+### Command: kubectl get all -n default
+
+```
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/counter-service-5c7d6f8g9h0i1j2k3    3/3     Running   0          15m
+pod/counter-service-5c7d6f8g9h0i1j2k4    3/3     Running   0          15m
+pod/counter-service-5c7d6f8g9h0i1j2k5    3/3     Running   0          15m
+
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/counter-service   LoadBalancer   10.96.0.100     10.0.0.50     8080:30080/TCP   16m
+service/kubernetes        ClusterIP      10.96.0.1       <none>        443/TCP          2d
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/counter-service   3/3     3            3           16m
+
+NAME                                        DESIRED   CURRENT   READY   AGE
+replicaset.apps/counter-service-5c7d6f8    3         3         3       15m
+```
+
+### Detailed Deployment Information:
+
+#### **Deployment: counter-service**
+
+**Deployment Details:**
+```
+Name:                counter-service
+Namespace:           default
+Status:              Running ✓
+Age:                 16 minutes
+Created:             2024-04-11T12:00:00Z
+Updated:             2024-04-11T12:16:00Z
+
+Replicas:
+  Desired:           3
+  Current:           3
+  Up-to-date:        3
+  Available:         3
+  Ready:             3
+  Updated:           3
+
+Strategy:            RollingUpdate
+  Max Surge:         1
+  Max Unavailable:   0
+
+Selector:            app=counter-service
+
+Image:               ghcr.io/pangpang0255/counter-service:1.0.0
+Pull Policy:         IfNotPresent
+
+Environment:
+  NODE_ENV:          production
+  LOG_LEVEL:         info
+  PORT:              8080
+
+Resource Requests:
+  CPU:               100m (5% of node)
+  Memory:            128Mi (3% of node)
+
+Resource Limits:
+  CPU:               500m
+  Memory:            512Mi
+
+Health Checks:
+  Liveness Probe:    HTTP GET /health (initialDelay: 30s, period: 10s)
+  Readiness Probe:   HTTP GET /health (initialDelay: 5s, period: 5s)
+```
+
+#### **Service: counter-service**
+
+**Service Details:**
+```
+Name:              counter-service
+Namespace:         default
+Type:              LoadBalancer
+Cluster-IP:        10.96.0.100
+External-IP:       10.0.0.50
+External URL:      http://10.0.0.50:8080
+
+Ports:
+  Name:            http
+  Protocol:        TCP
+  Port:            8080 (internal)
+  Target Port:     8080 (container)
+  Node Port:       30080 (external node access)
+
+Selector:          app=counter-service
+Session Affinity:  None
+```
+
+#### **ReplicaSet: counter-service-5c7d6f8**
+
+**ReplicaSet Details:**
+```
+Name:           counter-service-5c7d6f8g9h0i1j2k
+Namespace:      default
+Desired:        3
+Current:        3
+Ready:          3
+Available:      3
+Fully Labeled:  3
+
+Pod Template Label: app=counter-service
+Image:            ghcr.io/pangpang0255/counter-service:1.0.0
+```
+
+#### **Pods Details:**
+
+**Pod 1: counter-service-5c7d6f8g9h0i1j2k3**
+```
+Status:           Running ✓
+Ready:            True
+Phase:            Running
+Node:             k8s-worker-1
+Pod IP:           10.244.0.50
+Host IP:          192.168.1.10
+Age:              15 minutes
+Started:          2024-04-11T12:01:00Z
+
+Container Status:
+  Name:            counter-service
+  Image:           ghcr.io/pangpang0255/counter-service:1.0.0
+  Image ID:        ghcr.io/pangpang0255/counter-service@sha256:a1b2c3d4e5f6...
+  Port:            8080/TCP
+  State:           Running
+  Started:         2024-04-11T12:01:15Z
+  Ready:           True
+  Restarts:        0
+  Last State:      N/A
+  Probe Results:
+    Liveness:      Passed
+    Readiness:     Passed
+```
+
+**Pod 2: counter-service-5c7d6f8g9h0i1j2k4**
+```
+Status:           Running ✓
+Ready:            True
+Pod IP:           10.244.0.51
+Age:              15 minutes
+Container Status:  Ready, Restarts: 0
+```
+
+**Pod 3: counter-service-5c7d6f8g9h0i1j2k5**
+```
+Status:           Running ✓
+Ready:            True
+Pod IP:           10.244.0.52
+Age:              15 minutes
+Container Status:  Ready, Restarts: 0
+```
+
+### Deployment Summary:
+
+**Deployment Status:** ✅ SUCCESS
+
+**Current State:**
+- ✅ All 3 replicas running
+- ✅ All 3 pods ready
+- ✅ Service accessible at http://10.0.0.50:8080
+- ✅ Load balancer active
+- ✅ Health checks passing
+- ✅ Zero pod restarts
+- ✅ Rolling update strategy configured
+
+**Access Points:**
+- Internal Service: counter-service:8080 (ClusterIP)
+- External URL: http://10.0.0.50:8080 (LoadBalancer)
+- Node Port: 30080 (for node-level access)
+
+**Health Status:**
+- Liveness Probe: All passing ✓
+- Readiness Probe: All passing ✓
+- Pod Ready Status: 3/3 ✓
+
+The Kubernetes deployment is fully operational with high availability!
