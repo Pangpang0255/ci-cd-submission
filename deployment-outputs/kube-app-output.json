@@ -253,37 +253,3 @@
     "resourceVersion": "12345678"
   }
 }
-```
-
----
-
-## Application Status Summary
-
-✅ **Kubernetes Deployment Successful**
-
-**Service Status:**
-- Service Name: counter-service
-- Type: LoadBalancer
-- Port: 8080
-- External IP: 10.0.0.50
-- Status: Active ✓
-
-**Deployment Status:**
-- Deployment Name: counter-service
-- Desired Replicas: 3
-- Ready Replicas: 3
-- Available Replicas: 3
-- Status: ✅ Running
-
-**Pod Status:**
-- Pod 1: Running (10.244.0.50) ✓
-- Pod 2: Running (10.244.0.51) ✓
-- Pod 3: Running (10.244.0.52) ✓
-- All Pods Ready: YES
-
-**Access Information:**
-- Internal: counter-service:8080
-- External: http://10.0.0.50:8080
-- Node Port: 30080
-
-Application successfully deployed and running on Kubernetes with 3 replicas!
